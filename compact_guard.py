@@ -221,12 +221,13 @@ def run_resume(
     prompt: str,
     timeout: int,
     apply: bool,
-) -> int | None:
+) -> str:
     cmd = [
         codex_bin,
         "exec",
         "resume",
         "--all",
+        "--skip-git-repo-check",
         "-m",
         model,
         thread_id,
@@ -234,9 +235,9 @@ def run_resume(
     ]
     print("$ " + " ".join(quote_arg(part) for part in cmd))
     if not apply:
-        return None
-    proc = subprocess.run(cmd, text=True, timeout=timeout, check=False)
-    return proc.returncode
+        return "dry-run"
+    subprocess.Popen(cmd)
+    return "started"
 
 
 def quote_arg(value: str) -> str:
@@ -289,7 +290,7 @@ def handle_thread(
         }
 
     if args.run_trigger:
-        code = run_resume(
+        trigger_status = run_resume(
             args.codex_bin,
             thread.id,
             args.fallback_model,
@@ -297,12 +298,10 @@ def handle_thread(
             args.trigger_timeout,
             args.apply,
         )
-        if code is None:
+        if trigger_status == "dry-run":
             print(f"[trigger] dry-run for {thread.id}")
-        elif code == 0:
-            print(f"[trigger] completed for {thread.id}")
         else:
-            print(f"[trigger] exit={code} for {thread.id}", file=sys.stderr)
+            print(f"[trigger] started for {thread.id}")
 
     if args.apply:
         maybe_restore(conn, args, state, thread, tail_text(thread.rollout_path, args.tail_bytes))
