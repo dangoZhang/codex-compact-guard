@@ -1,16 +1,16 @@
 # codex-compact-guard
 
-> Use codex-compact-guard to evaluate guard Codex compact failures by temporarily switching models.
+> Keep long Codex sessions usable when compaction pressure rises.
 
-Use codex-compact-guard to evaluate guard Codex compact failures by temporarily switching models.
+`codex-compact-guard` is a small Python guard for Codex workflows. It watches for moments where compaction is likely to damage continuity, then helps switch models or preserve context before the session loses the thread.
 
 ## Why
-Developers and maintainers who need to evaluate guard Codex compact failures by temporarily switching models.
+Long agent sessions fail quietly when context gets compressed at the wrong moment. The fix is not more prompts; it is earlier detection and a cleaner handoff.
 
 ## What it does
-- Guard Codex compact failures by temporarily switching models.
-- Starts from a copyable command: `python compact_guard.py`.
-- Makes the project shape clear from its stack: Python.
+- Adds a guardrail around Codex compact/continuation risk.
+- Keeps the implementation small enough to inspect and adapt.
+- Gives you one command to run before a long local session.
 
 ## Quick start
 ```bash
@@ -18,17 +18,10 @@ python compact_guard.py
 ```
 
 ## Example output
-````md
-# codex-compact-guard
-> Use codex-compact-guard to evaluate guard Codex compact failures by temporarily switching models.
-
-```bash
-python compact_guard.py
-```
-
-- Guard Codex compact failures by temporarily switching models
+````text
+context pressure rising -> switch/preserve -> continue with less loss
 ````
 
 ## Proof
-- recently updated; Python.
+- Single-file Python tool, easy to audit.
 - Source: https://github.com/dangoZhang/codex-compact-guard
