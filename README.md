@@ -1,11 +1,34 @@
 # codex-compact-guard
 
-> Guard Codex compact failures by temporarily switching models
+> Use codex-compact-guard to evaluate guard Codex compact failures by temporarily switching models.
 
-| Field | Detail | Field | Detail |
-|---|---|---|---|
-| Essence | codex-compact-guard is guard Codex compact failures by temporarily switching models. | For | Developers, maintainers, and early users evaluating guard Codex compact failures by temporarily switching models. |
-| Capability | Codex 长线程有时会 remote compact 失败，线程卡在 gpt-5.5 下继续触发同一个失败。 | Quick start | python compact_guard.py |
-| Proof | recently updated | Stack | Python |
-| Links | https://github.com/dangoZhang/codex-compact-guard | License | MIT License |
-| Freshness | 399731c 2026-05-30 |  |  |
+Use codex-compact-guard to evaluate guard Codex compact failures by temporarily switching models.
+
+## Why
+Developers and maintainers who need to evaluate guard Codex compact failures by temporarily switching models.
+
+## What it does
+- Guard Codex compact failures by temporarily switching models.
+- Starts from a copyable command: `python compact_guard.py`.
+- Makes the project shape clear from its stack: Python.
+
+## Quick start
+```bash
+python compact_guard.py
+```
+
+## Example output
+````md
+# codex-compact-guard
+> Use codex-compact-guard to evaluate guard Codex compact failures by temporarily switching models.
+
+```bash
+python compact_guard.py
+```
+
+- Guard Codex compact failures by temporarily switching models
+````
+
+## Proof
+- recently updated; Python.
+- Source: https://github.com/dangoZhang/codex-compact-guard
